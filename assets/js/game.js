@@ -56,7 +56,7 @@ var fight = function(enemyName) {
         // remove players's health by subtracting the amount set in the enemyAttack variable
         playerHealth = playerHealth - enemyAttack;
         console.log(
-        enemyName + ' attacked ' + playerName + '. ' + playerName + ' now has ' + playerHealth + ' health remaining.'
+            enemyName + ' attacked ' + playerName + '. ' + playerName + ' now has ' + playerHealth + ' health remaining.'
         );
 
         // check player's health
@@ -71,14 +71,37 @@ var fight = function(enemyName) {
     } 
 };
 
-for (var i = 0; i < enemyNames.length; i++) {
+// function to start a new game
+var startGame = function() {
+    // reset player stats
+  playerHealth = 100;
+  playerAttack = 10;
+  playerMoney = 10;
+  
+   for (var i = 0; i < enemyNames.length; i++) {
+
     if (playerHealth > 0) {
+
         window.alert("Welcome to Robot Gladiators! Round " + ( i + 1 ) );
+
         var pickedEnemyName = enemyNames[i];
+
         enemyHealth = 50;
+
         fight(pickedEnemyName);
+
     } else {
+
         window.alert("You have lost your robot in battle! Game Over!");
+
         break;
     }
-}
+    }
+    
+    // play again
+    startGame();
+    
+};
+
+// start the game when the page loads
+debugger startGame();
